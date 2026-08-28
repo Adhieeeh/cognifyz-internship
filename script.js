@@ -13,14 +13,14 @@ colorBtn.addEventListener('click', function() {
     document.body.style.backgroundColor = getRandomColor();
 });
 
-// --- Task 5: API Integration using fetch() ---
+// --- Task 5: API Integration ---
 const fetchBtn = document.getElementById('fetchBtn');
 const apiContainer = document.getElementById('apiContainer');
 
 fetchBtn.addEventListener('click', fetchPosts);
 
 function fetchPosts() {
-    apiContainer.innerHTML = '<p class="loading">Fetching data from API...</p>';
+    apiContainer.innerHTML = '<p class="text-center text-muted">Fetching data from API...</p>';
 
     fetch('https://jsonplaceholder.typicode.com/posts?_limit=3')
         .then(response => {
@@ -30,17 +30,20 @@ function fetchPosts() {
         .then(data => {
             apiContainer.innerHTML = '';
             data.forEach(post => {
-                const card = document.createElement('div');
-                card.className = 'api-card';
-                card.innerHTML = `
-                    <h3>${post.title}</h3>
-                    <p>${post.body}</p>
+                // Wrap cards inside Bootstrap grid column wrappers
+                const col = document.createElement('div');
+                col.className = 'col-md-4';
+                col.innerHTML = `
+                    <div class="card h-100 p-3 shadow-sm api-card">
+                        <h5 class="card-title text-capitalize text-primary">${post.title}</h5>
+                        <p class="card-text text-secondary small">${post.body}</p>
+                    </div>
                 `;
-                apiContainer.appendChild(card);
+                apiContainer.appendChild(col);
             });
         })
         .catch(error => {
-            apiContainer.innerHTML = `<p class="error">Failed to load data: ${error.message}</p>`;
+            apiContainer.innerHTML = `<p class="text-center text-danger fw-bold">Failed to load data: ${error.message}</p>`;
         });
 }
 
@@ -55,11 +58,10 @@ const emailError = document.getElementById('emailError');
 const messageError = document.getElementById('messageError');
 const formSuccess = document.getElementById('formSuccess');
 
-// Regular Expression for Basic Email Validation
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 form.addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent page reload on submit
+    e.preventDefault();
 
     let isValid = true;
 
@@ -90,29 +92,26 @@ form.addEventListener('submit', function(e) {
         clearError(messageInput, messageError);
     }
 
-    // If valid, display success message
+    // Success feedback display
     if (isValid) {
         formSuccess.textContent = 'Form submitted successfully!';
-        formSuccess.style.display = 'block';
-        form.reset(); // Clear input fields
+        formSuccess.classList.remove('d-none');
+        form.reset();
 
-        // Hide success message after 4 seconds
         setTimeout(() => {
-            formSuccess.style.display = 'none';
+            formSuccess.classList.add('d-none');
         }, 4000);
     } else {
-        formSuccess.style.display = 'none';
+        formSuccess.classList.add('d-none');
     }
 });
 
 function showError(inputElement, errorElement, message) {
-    const parent = inputElement.parentElement;
-    parent.classList.add('invalid');
+    inputElement.classList.add('is-invalid');
     errorElement.textContent = message;
 }
 
 function clearError(inputElement, errorElement) {
-    const parent = inputElement.parentElement;
-    parent.classList.remove('invalid');
+    inputElement.classList.remove('is-invalid');
     errorElement.textContent = '';
 }

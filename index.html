@@ -3,66 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cognifyz Internship - Task 6</title>
-    <!-- Link External CSS -->
+    <title>Cognifyz Internship - Task 7</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet Override -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Welcome to My Interactive Website</h1>
-        <h2>Level 3: Advanced - Task 6</h2>
+    <!-- Bootstrap Navigation Component -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Cognifyz Project</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#interactive">Interactive</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#api">API Data</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Form</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-        <p>
-            This webpage is part of the Cognifyz Technologies Front-End Development Internship program.
-            Task 6 builds a custom styled HTML form with real-time JavaScript validation and visual error feedback.
-        </p>
-
-        <!-- Task 4 Color Button -->
-        <div class="btn-container">
-            <button id="colorBtn" class="color-btn">Change Background Color</button>
+    <!-- Main Container -->
+    <div class="container my-5">
+        
+        <!-- Header Hero Section -->
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-dark">Welcome to My Interactive Website</h1>
+            <p class="lead text-primary fw-semibold">Level 4: Expert - Task 7 (Component-Based Styling with Bootstrap)</p>
+            <p class="text-muted">Refactored using Bootstrap 5 framework components for responsive grid layouts, structured forms, and modular design.</p>
         </div>
 
-        <!-- Task 5 API Integration Section -->
-        <div class="api-section">
-            <h2 style="text-align: center; border: none;">Dynamic API Data</h2>
-            <button id="fetchBtn" class="fetch-btn">Fetch Data from API</button>
-            <div id="apiContainer"></div>
+        <!-- Task 4 Interactive Color Switcher Section -->
+        <div id="interactive" class="card shadow-sm p-4 mb-4 bg-white rounded text-center">
+            <h3 class="h5 mb-3 text-secondary">Task 4: Interactive Background Switcher</h3>
+            <div>
+                <button id="colorBtn" class="btn btn-primary px-4 py-2">Change Background Color</button>
+            </div>
+        </div>
+
+        <!-- Task 5 API Section -->
+        <div id="api" class="card shadow-sm p-4 mb-4 bg-white rounded">
+            <h3 class="h5 text-center text-secondary mb-3">Task 5: Dynamic API Data Integration</h3>
+            <div class="text-center mb-3">
+                <button id="fetchBtn" class="btn btn-success">Fetch Posts from API</button>
+            </div>
+            <!-- API Container styled with Bootstrap Responsive Grid -->
+            <div id="apiContainer" class="row g-3"></div>
         </div>
 
         <!-- Task 6 Form Section -->
-        <div class="form-section">
-            <h2 style="text-align: center; border: none;">Contact Form</h2>
-            
-            <form id="contactForm" novalidate>
-                <div class="form-group">
-                    <label for="name">Full Name:</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name">
-                    <small class="error-msg" id="nameError"></small>
+        <div id="contact" class="card shadow-sm p-4 mb-4 bg-white rounded">
+            <h3 class="h5 text-center text-secondary mb-4">Task 6: Form Styling & Validation</h3>
+            <form id="contactForm" class="mx-auto style-form" style="max-width: 500px;" novalidate>
+                <div class="mb-3">
+                    <label for="name" class="form-label fw-bold">Full Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your full name">
+                    <div class="text-danger small mt-1" id="nameError"></div>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address">
-                    <small class="error-msg" id="emailError"></small>
+                <div class="mb-3">
+                    <label for="email" class="form-label fw-bold">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+                    <div class="text-danger small mt-1" id="emailError"></div>
                 </div>
 
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Enter your message..."></textarea>
-                    <small class="error-msg" id="messageError"></small>
+                <div class="mb-3">
+                    <label for="message" class="form-label fw-bold">Message</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Enter your message..."></textarea>
+                    <div class="text-danger small mt-1" id="messageError"></div>
                 </div>
 
-                <button type="submit" class="submit-btn">Submit Form</button>
-                <div id="formSuccess" class="success-msg"></div>
+                <button type="submit" class="btn btn-dark w-100 fw-bold">Submit Form</button>
+                <div id="formSuccess" class="alert alert-success mt-3 text-center d-none"></div>
             </form>
         </div>
 
-        <p class="status-box" style="margin-top: 20px;">
-            Task 6 complete: Custom form styled with CSS and fully validated using JavaScript!
-        </p>
+        <!-- Footer Alert Banner -->
+        <div class="alert alert-info text-center mt-4" role="alert">
+            Task 7 Complete: Fully refactored using modular Bootstrap components, media layouts, and framework classes!
+        </div>
+
     </div>
 
+    <!-- Bootstrap JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Link External JavaScript -->
     <script src="script.js"></script>
 </body>
