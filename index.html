@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cognifyz Internship - Task 5</title>
+    <title>Cognifyz Internship - Task 6</title>
     <!-- Link External CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -11,11 +11,11 @@
 
     <div class="container">
         <h1>Welcome to My Interactive Website</h1>
-        <h2>Level 3: Advanced - Task 5</h2>
+        <h2>Level 3: Advanced - Task 6</h2>
 
         <p>
             This webpage is part of the Cognifyz Technologies Front-End Development Internship program.
-            Task 5 integrates a public API (`JSONPlaceholder`) to fetch data asynchronously using JavaScript's `fetch()` method and update the DOM dynamically.
+            Task 6 builds a custom styled HTML form with real-time JavaScript validation and visual error feedback.
         </p>
 
         <!-- Task 4 Color Button -->
@@ -30,8 +30,36 @@
             <div id="apiContainer"></div>
         </div>
 
+        <!-- Task 6 Form Section -->
+        <div class="form-section">
+            <h2 style="text-align: center; border: none;">Contact Form</h2>
+            
+            <form id="contactForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name">
+                    <small class="error-msg" id="nameError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address">
+                    <small class="error-msg" id="emailError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Enter your message..."></textarea>
+                    <small class="error-msg" id="messageError"></small>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Form</button>
+                <div id="formSuccess" class="success-msg"></div>
+            </form>
+        </div>
+
         <p class="status-box" style="margin-top: 20px;">
-            Task 5 complete: External JSON data fetched and dynamically displayed on the page!
+            Task 6 complete: Custom form styled with CSS and fully validated using JavaScript!
         </p>
     </div>
 

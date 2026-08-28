@@ -20,22 +20,15 @@ const apiContainer = document.getElementById('apiContainer');
 fetchBtn.addEventListener('click', fetchPosts);
 
 function fetchPosts() {
-    // Show loading state
     apiContainer.innerHTML = '<p class="loading">Fetching data from API...</p>';
 
-    // Fetch dynamic data from JSONPlaceholder API
     fetch('https://jsonplaceholder.typicode.com/posts?_limit=3')
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json(); // Parse JSON data
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
         })
         .then(data => {
-            // Clear loading text
             apiContainer.innerHTML = '';
-
-            // Dynamically create and render HTML elements for each post
             data.forEach(post => {
                 const card = document.createElement('div');
                 card.className = 'api-card';
@@ -49,4 +42,77 @@ function fetchPosts() {
         .catch(error => {
             apiContainer.innerHTML = `<p class="error">Failed to load data: ${error.message}</p>`;
         });
+}
+
+// --- Task 6: Form Validation ---
+const form = document.getElementById('contactForm');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
+
+const nameError = document.getElementById('nameError');
+const emailError = document.getElementById('emailError');
+const messageError = document.getElementById('messageError');
+const formSuccess = document.getElementById('formSuccess');
+
+// Regular Expression for Basic Email Validation
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent page reload on submit
+
+    let isValid = true;
+
+    // Validate Name
+    if (nameInput.value.trim() === '') {
+        showError(nameInput, nameError, 'Name is required.');
+        isValid = false;
+    } else {
+        clearError(nameInput, nameError);
+    }
+
+    // Validate Email
+    if (emailInput.value.trim() === '') {
+        showError(emailInput, emailError, 'Email is required.');
+        isValid = false;
+    } else if (!emailRegex.test(emailInput.value.trim())) {
+        showError(emailInput, emailError, 'Please enter a valid email address.');
+        isValid = false;
+    } else {
+        clearError(emailInput, emailError);
+    }
+
+    // Validate Message
+    if (messageInput.value.trim() === '') {
+        showError(messageInput, messageError, 'Message cannot be empty.');
+        isValid = false;
+    } else {
+        clearError(messageInput, messageError);
+    }
+
+    // If valid, display success message
+    if (isValid) {
+        formSuccess.textContent = 'Form submitted successfully!';
+        formSuccess.style.display = 'block';
+        form.reset(); // Clear input fields
+
+        // Hide success message after 4 seconds
+        setTimeout(() => {
+            formSuccess.style.display = 'none';
+        }, 4000);
+    } else {
+        formSuccess.style.display = 'none';
+    }
+});
+
+function showError(inputElement, errorElement, message) {
+    const parent = inputElement.parentElement;
+    parent.classList.add('invalid');
+    errorElement.textContent = message;
+}
+
+function clearError(inputElement, errorElement) {
+    const parent = inputElement.parentElement;
+    parent.classList.remove('invalid');
+    errorElement.textContent = '';
 }
