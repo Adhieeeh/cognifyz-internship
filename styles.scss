@@ -1,0 +1,66 @@
+// --- 1. Sass Variables ---
+$primary-color: #0d6efd;
+$secondary-color: #6c757d;
+$success-color: #198754;
+$bg-color: #f8f9fa;
+$border-radius: 8px;
+$transition-speed: 0.4s;
+
+// --- 2. Sass Mixin ---
+@mixin card-box-shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  border-radius: $border-radius;
+}
+
+// --- 3. Nesting & Custom Styles ---
+body {
+  background-color: $bg-color;
+  transition: background-color $transition-speed ease;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 900px;
+}
+
+// Nested Card Component Styles
+.card {
+  @include card-box-shadow;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+
+  .card-title {
+    color: $primary-color;
+    font-size: 1.25rem;
+  }
+
+  .card-text {
+    color: $secondary-color;
+    font-size: 0.9rem;
+  }
+}
+
+// API Card Nested Rules
+.api-card {
+  border-left: 4px solid $primary-color;
+  background-color: #ffffff;
+  padding: 1rem;
+}
+
+// Form Custom SCSS Rules
+#contactForm {
+  .form-label {
+    color: #2c3e50;
+  }
+
+  .form-control {
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 0 0.25rem rgba($primary-color, 0.25);
+    }
+
+    &.is-invalid {
+      border-color: #dc3545;
+    }
+  }
+}

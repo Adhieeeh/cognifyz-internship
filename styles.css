@@ -1,19 +1,41 @@
-/* Custom CSS Overrides on top of Bootstrap */
-
 body {
-    transition: background-color 0.4s ease;
-    background-color: #f8f9fa;
+  background-color: #f8f9fa;
+  transition: background-color 0.4s ease;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 900px;
 }
 
 .card {
-    border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
 }
-
-.form-control.is-invalid {
-    border-color: #dc3545;
+.card .card-title {
+  color: #0d6efd;
+  font-size: 1.25rem;
+}
+.card .card-text {
+  color: #6c757d;
+  font-size: 0.9rem;
 }
 
 .api-card {
-    background-color: #ffffff;
-    border-left: 4px solid #0d6efd;
+  border-left: 4px solid #0d6efd;
+  background-color: #ffffff;
+  padding: 1rem;
 }
+
+#contactForm .form-label {
+  color: #2c3e50;
+}
+#contactForm .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+#contactForm .form-control.is-invalid {
+  border-color: #dc3545;
+}/*# sourceMappingURL=styles.css.map */
